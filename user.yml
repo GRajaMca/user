@@ -32,7 +32,7 @@ kind: ConfigMap
 metadata:
   name: user-config
 data:
-   customer_url: "http://localhost:9111/customer"
+   customer_url: "http://customer:9111/customer"
 ---
 apiVersion: v1
 kind: Service
@@ -42,8 +42,8 @@ spec:
   selector:
     app: user
     tier: backend
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8112
       targetPort: user
-  type: LoadBalancer
